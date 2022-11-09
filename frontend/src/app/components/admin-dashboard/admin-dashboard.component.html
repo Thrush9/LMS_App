@@ -1,0 +1,107 @@
+<div class="container p-2">
+  <div class="row g-0 p-4 d-flex justify-content-around align-items-center">
+    <div class="card bkg-primary text-white col-lg-4 col-md-4 col-sm-12 p-2">
+      <div class="row g-0">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+          <div class="body text-center">
+            <h3 class="m-0 mb-1">Companies Registered</h3>
+            <h5 class="m-0 fs-4 mb-1">{{totalCompanies}}</h5>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center">
+          <i class="fa fa-university fa-3x mt-2" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card bkg-primary text-white col-lg-4 col-md-4 col-sm-12 p-2">
+      <div class="row g-0">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+          <div class="body text-center">
+            <h3 class="m-0 mb-1">Scheduled Courses</h3>
+            <h5 class="m-0 fs-4 mb-1">{{totalCourses}}</h5>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center">
+          <i class="fa fa-address-card fa-3x mt-2" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="card bkg-primary text-white col-lg-4 col-md-4 col-sm-12 p-2">
+      <div class="row g-0">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+          <div class="body text-center">
+            <h3 class="m-0 mb-1">Users Registered</h3>
+            <h5 class="m-0 fs-4 mb-1">{{totalUsers}}</h5>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-center">
+          <i class="fa fa-users fa-3x mt-2" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="p-2">
+    <h2 class="m-0 fs-3 text-center text-white">Registerd Companies</h2>
+    <mat-divider class="my-2 bkg-primary"></mat-divider>
+    <div class="table-responsive">
+      <table class="table table-borderless table-striped table-hover airlinesTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Email</th>
+            <th scope="col" class="text-center">Type</th>
+            <th scope="col" class="text-center">POC</th>
+            <th scope="col" class="text-center">Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of companiesData | paginate: { id: 'pagination',itemsPerPage: 3, totalItems: totalCompanies, currentPage: p}">
+            <td scope="col" class="text-center">{{data.name}}</td>
+            <td scope="col" class="text-center">{{data.email}}</td>
+            <td scope="col" class="text-center">{{data.type}}</td>
+            <td scope="col" class="text-center">{{data.poc}}</td>
+            <td scope="col" class="text-center">{{data.contact || '-'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-decoration-none d-flex justify-content-end p-2 ">
+    <pagination-controls id="pagination" (pageChange)="p = $event" previousLabel="Prev" nextLabel="Next"></pagination-controls>
+  </div>
+
+  <div class="p-2">
+    <h2 class="m-0 fs-3 text-center text-white">Scheduled Courses</h2>
+    <mat-divider class="my-2 bkg-primary"></mat-divider>
+    <div class="table-responsive">
+      <table class="table table-borderless table-striped table-hover airlinesTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">CourseId</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Technology</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Duration</th>
+            <th scope="col" class="text-center">URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of coursesData | paginate: { id: 'pagination1',itemsPerPage: 3, currentPage: p1}">
+            <td scope="col" class="text-center">{{data.courseId}}</td>
+            <td scope="col" class="text-center">{{data.name}}</td>
+            <td scope="col" class="text-center">{{data.technology}}</td>
+            <td scope="col" class="text-center">{{data.description}}</td>
+            <td scope="col" class="text-center">{{data.duration}}</td>
+            <td scope="col" class="text-center">{{data.url}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-decoration-none d-flex justify-content-end p-2 ">
+    <pagination-controls id="pagination1" (pageChange)="p1 = $event" previousLabel="Prev" nextLabel="Next"></pagination-controls>
+  </div>
+
+</div>

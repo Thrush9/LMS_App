@@ -1,0 +1,51 @@
+<mat-sidenav-container class="container-bg">
+  <mat-sidenav #sidenav="matSidenav" color="primary" class="mat-elevation-z8 bkg-primary text-white text-align-center m-3 p-2" mode="side" opened>
+    <div class="profile d-flex flex-column align-items-center justify-content-center">
+      <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+      <h4 class="mt-2 fw-bolder fs-5 text-white">{{username}}</h4>
+      <span class="text-white">{{email}}</span>
+    </div>
+    <mat-divider class="my-2 bg-white"></mat-divider>
+    <div class="menus d-flex flex-column align-items-center justify-content-center">
+
+      <div *ngIf="checkRoleAndPath()">
+        <div class="menu-item d-flex justify-content-start align-items-center  my-1" routerLink="/dashboard/admin">
+          <mat-icon class="me-1">home</mat-icon>
+          Dashboard
+        </div>
+        <div class="menu-item d-flex justify-content-start align-items-center  my-1" routerLink="/dashboard/addCompany">
+          <mat-icon class="me-1">group_add</mat-icon>
+          Register Company
+        </div>
+        <div class="menu-item d-flex justify-content-start align-items-center my-1" routerLink="/dashboard/addCourse">
+          <mat-icon class="me-1">note_add</mat-icon>
+          Add Course
+        </div>
+        <div class="menu-item d-flex justify-content-start align-items-center my-1" routerLink="/dashboard/courseList">
+          <mat-icon class="me-1">list_alt</mat-icon>
+          Courses List
+        </div>
+      </div>
+      <div *ngIf="!checkRoleAndPath()">
+        <div class="menu-item d-flex justify-content-start align-items-center  my-1" routerLink="/dashboard/user">
+          <mat-icon class="me-1">home</mat-icon>
+          Dashboard
+        </div>
+        <!-- <div class="menu-item d-flex justify-content-start align-items-center  my-1" routerLink="/dashboard/bookingStatus">
+          <mat-icon class="me-1">assignment</mat-icon>
+          Booking Status
+        </div>
+        <div class="menu-item d-flex justify-content-start align-items-center my-1" routerLink="/dashboard/bookingHistory">
+          <mat-icon class="me-1">flight_takeoff</mat-icon>
+          Booking History
+        </div> -->
+      </div>
+
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8 signup-btn">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

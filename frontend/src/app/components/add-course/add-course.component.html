@@ -1,0 +1,82 @@
+<div class="container  p-4">
+  <!-- Section: SignIn Form -->
+  <section class=" text-center d-flex justify-content-center">
+    <div class="card col-lg-10 col-md-10 col-sm-12 register">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-12 col-md-12 col-sm-12 p-2">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h2 class="text-center fs-3">Add Course Form</h2>
+            <mat-divider class="my-2 bkg-primary"></mat-divider>
+            <div class="mb-2">
+              <form [formGroup]="courseForm">
+                <div class="row">
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Company</mat-label>
+                    <mat-select formControlName="companyId">
+                      <mat-option *ngFor="let data of companiesData" [value]="data.id">
+                        {{data.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>CourseId</mat-label>
+                    <input type="number" matInput placeholder="Enter CourseId" formControlName="courseId">
+                    <mat-icon matSuffix>create</mat-icon>
+                    <mat-error class="text-center" *ngIf="courseId.touched || courseId.dirty">
+                      <strong>CourseId is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Course Name</mat-label>
+                    <input type="text" matInput placeholder="Enter Course Name" formControlName="name">
+                    <mat-icon matSuffix>school</mat-icon>
+                    <mat-error class="text-center" *ngIf="name.touched || name.dirty">
+                      <strong>Course Name is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Course Technology</mat-label>
+                    <input type="text" matInput placeholder="Enter Course Technology" formControlName="technology">
+                    <mat-icon matSuffix>phonelink</mat-icon>
+                    <mat-error class="text-center" *ngIf="technology.touched || technology.dirty">
+                      <strong>Course Technology is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Course Description</mat-label>
+                    <input type="text" matInput placeholder="Enter Course Description" formControlName="description">
+                    <mat-icon matSuffix>speaker_notes</mat-icon>
+                    <mat-error class="text-center" *ngIf="description.touched || description.dirty">
+                      <strong>Course Description is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Course Duration</mat-label>
+                    <input type="number" matInput placeholder="Enter Course Duration" formControlName="duration">
+                    <mat-icon matSuffix>query_builder</mat-icon>
+                    <mat-error class="text-center" *ngIf="duration.touched || duration.dirty">
+                      <strong>Course Duration is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                    <mat-label>Course URL</mat-label>
+                    <input type="text" matInput placeholder="Enter Course URL" formControlName="url">
+                    <mat-icon matSuffix>playlist_play</mat-icon>
+                    <mat-error class="text-center" *ngIf="url.touched || url.dirty">
+                      <strong>Course URL is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </form>
+            </div>
+            <mat-error class="mb-2">{{error}}</mat-error>
+            <div class="buttons mb-3">
+              <button mat-raised-button class="ms-2 me-2" color="primary" [disabled]="!courseForm.valid" (click)="onSubmit()">Add Course</button>
+              <button mat-raised-button class="ms-2 me-2" color="accent" (click)="clearForm()">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

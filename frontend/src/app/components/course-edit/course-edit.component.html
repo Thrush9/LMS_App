@@ -1,0 +1,74 @@
+<h2 mat-dialog-title class="text-center fs-3">Edit Course Form</h2>
+<mat-dialog-content class="text-center d-flex justify-content-center">
+  <div class="col-lg-12 col-md-12 col-sm-12 register">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-12 col-md-12 col-sm-12 p-2">
+        <div class="d-flex flex-column justify-content-center">
+          <mat-divider class="my-2 bkg-primary"></mat-divider>
+          <div class="mb-2">
+            <form [formGroup]="editCourseForm">
+              <div class="row">
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>CourseId</mat-label>
+                  <input type="number" matInput placeholder="Enter CourseId" formControlName="courseId">
+                  <mat-icon matSuffix>create</mat-icon>
+                  <mat-error class="text-center" *ngIf="courseId.touched || courseId.dirty">
+                    <strong>CourseId is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Course Name</mat-label>
+                  <input type="text" matInput placeholder="Enter Course Name" formControlName="name">
+                  <mat-icon matSuffix>school</mat-icon>
+                  <mat-error class="text-center" *ngIf="name.touched || name.dirty">
+                    <strong>Course Name is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Course Technology</mat-label>
+                  <input type="text" matInput placeholder="Enter Course Technology" formControlName="technology">
+                  <mat-icon matSuffix>phonelink</mat-icon>
+                  <mat-error class="text-center" *ngIf="technology.touched || technology.dirty">
+                    <strong>Course Technology is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Course Description</mat-label>
+                  <input type="text" matInput placeholder="Enter Course Description" formControlName="description">
+                  <mat-icon matSuffix>speaker_notes</mat-icon>
+                  <mat-error class="text-center" *ngIf="description.touched || description.dirty">
+                    <strong>Course Description is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Course Duration</mat-label>
+                  <input type="number" matInput placeholder="Enter Course Duration" formControlName="duration">
+                  <mat-icon matSuffix>query_builder</mat-icon>
+                  <mat-error class="text-center" *ngIf="duration.touched || duration.dirty">
+                    <strong>Course Duration is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Course URL</mat-label>
+                  <input type="text" matInput placeholder="Enter Course URL" formControlName="url">
+                  <mat-icon matSuffix>playlist_play</mat-icon>
+                  <mat-error class="text-center" *ngIf="url.touched || url.dirty">
+                    <strong>Course URL is required</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </form>
+            <mat-error class="mb-2">{{error}}</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="text-center d-flex justify-content-center">
+  <div class="buttons mb-3">
+    <button mat-raised-button class="ms-2 me-2" color="primary" [disabled]="!editCourseForm.valid" (click)="onSave()">Save Course</button>
+    <button mat-raised-button class="ms-2 me-2" color="accent" (click)="close()">Close</button>
+  </div>
+</mat-dialog-actions>

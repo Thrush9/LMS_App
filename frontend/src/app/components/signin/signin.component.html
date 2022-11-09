@@ -1,0 +1,55 @@
+<div class="container  p-4">
+  <!-- Section: SignIn Form -->
+  <section class=" text-center d-flex justify-content-center">
+    <div class="card col-lg-8 col-md-10 col-sm-12">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-6 col-md-4 col-sm-12 p-2">
+          <img src="assets/images/SignIn.jpg" class="img-fluid rounded d-block" alt="SignIn Sample Picture">
+        </div>
+        <div class="col-lg-6 col-md-8 col-sm-12 p-2">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <div class="profile mb-2">
+              <i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>
+            </div>
+            <h2 class="text-center">SignIn Form</h2>
+            <div class="mb-2">
+              <form [formGroup]="signInForm">
+                <div class="row">
+                  <mat-form-field appearance="outline" class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput placeholder="Enter Username" formControlName="username">
+                    <mat-icon matSuffix>account_box</mat-icon>
+                    <mat-error class="text-center" *ngIf="username.touched || username.dirty">
+                      <strong>Username is required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline" class="col-lg-12 col-md-12 col-sm-12 mb-2">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput placeholder="Enter Password" formControlName="password">
+                    <mat-icon matSuffix>fingerprint</mat-icon>
+                    <mat-error class="text-center" *ngIf="password.invalid && (password.dirty || password.touched)">
+                      <strong>Password is required</strong>
+                    </mat-error>
+                    <mat-error class="text-center" *ngIf="password.errors?.['minlength']">
+                      <strong>Password must be atleast 8 characters</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </form>
+            </div>
+            <mat-error class="mb-2">{{error}}</mat-error>
+            <a class="card-text text-decoration-none mb-3" [routerLink]="['/signup']">
+              <small class="text-muted">
+                Don't have account ? Register with us!
+              </small>
+            </a>
+            <div class="buttons mb-3">
+              <button mat-raised-button class="ms-2 me-2" color="primary" [disabled]="!signInForm.valid" (click)="onSubmit()">SignIn</button>
+              <button mat-raised-button class="ms-2 me-2" color="accent" (click)="clearForm()">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

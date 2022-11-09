@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container-bg {
+  background-color: #cfd8dc;
+}
+
+.bkg-primary {
+  background-color: #0277bd;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #bbdefb;
+}
+
+input[type="search"],
+textarea {
+  background-color: #cfd8dc;
+}
+
+.signin-btn {
+  background-color: #0091ea;
+  color: white;
+}
+
+.signup-btn {
+  background-color: #bbdefb;
+}
+
+.airlinesTable,
+.flightsTable {
+  background-color: #42a5f5;
+}
+
+footer {
+  background-color: #0091ea;
+}

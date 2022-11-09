@@ -1,0 +1,82 @@
+<div class="container p-2">
+
+  <section class=" text-center d-flex justify-content-center p-2">
+    <div class="card col-lg-12 col-md-12 col-sm-12 register">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card-body d-flex flex-column justify-content-center">
+            <h2 class="text-center fs-3">Courses List</h2>
+            <mat-divider class="my-2 bkg-primary"></mat-divider>
+            <form [formGroup]="searchForm">
+              <div class="row">
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>Technology</mat-label>
+                  <mat-select formControlName="technology">
+                    <mat-option *ngFor="let data of technologyData" [value]="data">
+                      {{data}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>From Duration</mat-label>
+                  <input type="number" matInput placeholder="Enter From Duration" formControlName="fromDuration" required>
+                  <mat-icon matSuffix>query_builder</mat-icon>
+                  <mat-error class="text-center" *ngIf="fromDuration.touched || fromDuration.dirty">
+                    <strong>From Duration is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                  <mat-label>To Duration</mat-label>
+                  <input type="number" matInput placeholder="Enter To Duration" formControlName="toDuration">
+                  <mat-icon matSuffix>query_builder</mat-icon>
+                  <mat-error class="text-center" *ngIf="toDuration.touched || toDuration.dirty">
+                    <strong>To Duration is required</strong>
+                  </mat-error>
+                </mat-form-field>
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-2  d-flex flex-row justify-content-end">
+                  <button mat-raised-button class="mt-2" color="primary" [disabled]="!searchForm.valid" (click)="onSubmit()">Search</button>
+                  <button mat-raised-button class="mt-2 mx-2" color="accent" (click)="reset()">Reset</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="p-2">
+    <div class="table-responsive">
+      <table class="table table-borderless table-striped table-hover airlinesTable">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col" class="text-center">CourseId</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Technology</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Duration</th>
+            <th scope="col" class="text-center">URL</th>
+            <!-- <th scope="col" class="text-center">Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of coursesData | paginate: { id: 'pagination',itemsPerPage: 5, currentPage: p}">
+            <td scope="col" class="text-center">{{data.courseId}}</td>
+            <td scope="col" class="text-center">{{data.name}}</td>
+            <td scope="col" class="text-center">{{data.technology}}</td>
+            <td scope="col" class="text-center">{{data.description }}</td>
+            <td scope="col" class="text-center">{{data.duration}}</td>
+            <td scope="col" class="text-center">{{data.url}}</td>
+            <!-- <td scope="col" class="text-center">
+              <button mat-raised-button color="accent" (click)="bookFlight(data)">Select Flight</button>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-decoration-none d-flex justify-content-end p-2 ">
+    <pagination-controls id="pagination" (pageChange)="p = $event" previousLabel="Prev" nextLabel="Next"></pagination-controls>
+  </div>
+
+</div>
