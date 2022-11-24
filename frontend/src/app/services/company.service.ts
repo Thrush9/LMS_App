@@ -9,8 +9,8 @@ import { Company } from '../models/Company';
 })
 export class CompanyService {
 
-  //courseServiceAPI: string = 'http://localhost:8084';
-  courseServiceAPI: string = 'http://localhost:8765/CourseService';
+  //courseServiceAPI: string = 'http://localhost:8765/CourseService';
+  courseServiceAPI: string = 'http://courseservice-env.eba-s2dq6d2t.ap-south-1.elasticbeanstalk.com';
 
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
 

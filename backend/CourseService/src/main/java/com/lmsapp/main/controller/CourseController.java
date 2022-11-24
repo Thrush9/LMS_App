@@ -20,7 +20,7 @@ import com.lmsapp.main.exception.CourseNotFoundException;
 import com.lmsapp.main.model.Course;
 import com.lmsapp.main.service.CourseService;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://iiht-lmsapp.s3-website.ap-south-1.amazonaws.com", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1.0/lms/courses")
 public class CourseController {

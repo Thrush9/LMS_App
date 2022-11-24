@@ -34,7 +34,7 @@ import com.lmsapp.main.security.jwt.JwtUtils;
 import com.lmsapp.main.service.UserDetailsImpl;
 import com.lmsapp.main.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "http://iiht-lmsapp.s3-website.ap-south-1.amazonaws.com", maxAge = 3600)
 @RestController
 @RequestMapping("/api/v1.0/lms")
 public class AuthController {
